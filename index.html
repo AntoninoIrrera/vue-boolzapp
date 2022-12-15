@@ -59,9 +59,9 @@
                 </header>
 
                 <main class="navbarMain">
-                    <div class="chats" v-for="contact in contacts">
+                    <div class="chats" v-for="contact,index in contacts" @click="changeChat(index)" :class="contact.visible == false ? `active` : `` ">
                         <div>
-                            <img :src=`./img/avatar${contact.avatar}.jpg` alt=`avatar${contact.avatar}` class="rounded-circle me-2">
+                            <img :src=`./img/avatar${contact.avatar}.jpg` :alt=`avatar${contact.avatar}` class="rounded-circle me-2">
                         </div>
                         <div class="w-75">
                             <h5 class="m-0">{{contact.name}}</h5>
@@ -81,10 +81,10 @@
                 <header class="headerMex">
 
                     <div>
-                        <img src="./img/avatar_1.jpg" alt="avatar_1" class="rounded-circle me-2">
+                        <img :src=`./img/avatar${numeroImg}.jpg` :alt=`avatar${numeroImg}` class="rounded-circle me-2">
                     </div>
                     <div class="w-75">
-                        <h5 class="m-0">Michele</h5>
+                        <h5 class="m-0">{{displayNome}}</h5>
                         <p class="m-0">Ultimo accesso oggi alle 12:00</p>
                     </div>
                     <div class="w-25 text-end">
@@ -97,22 +97,31 @@
 
                 <main class="mainMex">
                     <section class="sfondoMex">
-                        <div class="mex send">
+                        <div class="mex" v-for="mex in contacts[indiceDisplay].messages" :class="mex.status == `sent` ? `sent` : `received`">
+                            <p class="m-0 ms-2 mt-2">{{mex.message}}</p>
+                            <p class="m-0 me-2 mb-1 clock">{{mex.date}}</p>
+                        </div>
+
+
+                        <!-- <div class="mex sent">
                             <p class="m-0 ms-2 mt-2">ciao</p>
                             <p class="m-0 me-2 mb-1 clock">15:50</p>
                         </div>
-                        <div class="mex send">
-                            <p class="m-0 ms-2 mt-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius adipisci voluptatem vel soluta voluptatum aliquam.</p>
+                        <div class="mex sent">
+                            <p class="m-0 ms-2 mt-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius adipisci voluptatem vel
+                                soluta voluptatum aliquam.</p>
                             <p class="m-0 me-2 mb-1 clock">15:50</p>
                         </div>
-                        <div class="mex send">
-                            <p class="m-0 ms-2 mt-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius adipisci voluptatem vel soluta voluptatum aliquam.</p>
+                        <div class="mex sent">
+                            <p class="m-0 ms-2 mt-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius adipisci voluptatem vel
+                                soluta voluptatum aliquam.</p>
                             <p class="m-0 me-2 mb-1 clock">15:50</p>
                         </div>
                         <div class="mex received">
-                            <p class="m-0 ms-2 mt-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius adipisci voluptatem vel soluta voluptatum aliquam.</p>
+                            <p class="m-0 ms-2 mt-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius adipisci voluptatem vel
+                                soluta voluptatum aliquam.</p>
                             <p class="m-0 me-2 mb-1 clock">15:50</p>
-                        </div>
+                        </div> -->
                         
                     </section>
                     <section class="inserireMex">

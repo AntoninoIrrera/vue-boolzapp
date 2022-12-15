@@ -168,12 +168,40 @@ createApp({
                         }
                     ],
                 }
-            ]
+            ],
 
+            indiceDisplay: 0,
 
+            contenitoreVariabile : 0,
+
+            displayNome: "Michele",
+
+            numeroImg: "_1",
         }
     },
     methods: {
+
+        changeChat(indice){
+
+            
+            this.contacts[this.contenitoreVariabile].visible = true;
+
+            this.contenitoreVariabile = indice
+
+            this.indiceDisplay = indice;
+
+            this.contacts[indice].visible = false;
+
+            this.displayNome = this.contacts[indice].name; 
+
+            this.numeroImg = this.contacts[indice].avatar;
         
+        },
+
+
+
+    },
+    created(){
+        this.contacts[0].visible = false;
     }
 }).mount("#app")
