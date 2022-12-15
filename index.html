@@ -129,7 +129,7 @@
                             <i class="fa-regular fa-face-smile m-2 fs-4"></i>
                         </div>
                         <div class="w-75">
-                            <input class="w-100" type="text" placeholder="Scrivi il messaggio">
+                            <input class="w-100" type="text" v-model="userInput" placeholder="Scrivi il messaggio" @keyup.enter="sentMex(userInput)">
                         </div>
                         <div class="grandezzaSectionMex">
                             <i class="fa-solid fa-microphone fs-4"></i>

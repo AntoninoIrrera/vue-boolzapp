@@ -177,6 +177,8 @@ createApp({
             displayNome: "Michele",
 
             numeroImg: "_1",
+
+            userInput: "",
         }
     },
     methods: {
@@ -197,6 +199,37 @@ createApp({
             this.numeroImg = this.contacts[indice].avatar;
         
         },
+        sentMex(mexUtente){
+
+            this.contacts[this.indiceDisplay].messages.push(
+                {
+                    date: "00:00",
+                    message: mexUtente,
+                    status: "sent"
+                }
+            )
+
+            this.clearMexUtente();
+
+            setTimeout(() => {
+                this.getMexAnswer();
+            }, 1*1000);
+
+        },
+        clearMexUtente(){
+            this.userInput = "";
+        },
+        getMexAnswer(){
+
+            this.contacts[this.indiceDisplay].messages.push({
+
+                date: '01:00',
+                message: 'OK!?!?!!',
+                status: 'received'
+
+            })
+
+        }
 
 
 
