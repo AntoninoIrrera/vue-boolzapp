@@ -181,6 +181,8 @@ createApp({
             userInput: "",
 
             nomeDaCercare: "",
+
+            prova: 0,
         }
     },
     methods: {
@@ -232,7 +234,9 @@ createApp({
 
         },
         serchFromContacsList(nome){
-            
+
+            this.prova = 0;
+
             this.contacts.forEach(contact => {
                 contact.visible = true;
             });
@@ -249,7 +253,9 @@ createApp({
 
             differenza.forEach(elemento => {
                 elemento.visible = false;
+                this.prova++;
             });
+
 
 
         },

@@ -71,6 +71,9 @@
                             <span>12:00</span>
                         </div>
                     </div>
+                    <div v-if="prova == contacts.length">
+                        <p class="m-4 fw-bold">Non ci sono contatti con quel nome</p>
+                    </div>
                     
                 </main>
 
@@ -129,7 +132,7 @@
                             <i class="fa-regular fa-face-smile m-2 fs-4"></i>
                         </div>
                         <div class="w-75">
-                            <input class="w-100" type="text" v-model="userInput" placeholder="Scrivi il messaggio" @keyup.enter="sentMex(userInput)">
+                            <input class="w-100 p-2" type="text" v-model="userInput" placeholder="Scrivi il messaggio" @keyup.enter="sentMex(userInput)">
                         </div>
                         <div class="grandezzaSectionMex">
                             <i class="fa-solid fa-microphone fs-4"></i>
