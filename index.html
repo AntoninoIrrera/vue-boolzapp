@@ -59,12 +59,12 @@
                 </header>
 
                 <main class="navbarMain">
-                    <div class="chats">
+                    <div class="chats" v-for="contact in contacts">
                         <div>
-                            <img src="./img/avatar_1.jpg" alt="avatar_1" class="rounded-circle me-2">
+                            <img :src=`./img/avatar${contact.avatar}.jpg` alt=`avatar${contact.avatar}` class="rounded-circle me-2">
                         </div>
                         <div class="w-75">
-                            <h5 class="m-0">Michele</h5>
+                            <h5 class="m-0">{{contact.name}}</h5>
                             <p class="m-0">Ultimo messaggio inviato</p>
                         </div>
                         <div>
