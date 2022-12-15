@@ -131,7 +131,7 @@
     justify-content: space-between;
 }
 
-.chats.active{
+.active{
     background-color: lightgray;
 }
 
@@ -177,5 +177,63 @@
     margin-top: 0.50rem;
     padding: 0.60rem;
     font-size: 1.2rem;
+    color: gray;
+}
+
+.mainMex{
+    height: calc(100% - 70px);
+}
+
+.sfondoMex{
+    height: calc(100% - 75px);
+    background-image: url(../img/mine.jpg);
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.inserireMex{
+    background-color: #f3eeea;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.mex{
+    border-radius: 10px;
+    margin-top: 0.75rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.send{
+    background-color: #d5f9ba;
+    align-self: flex-end;
+    margin-right: 6rem;
+    width: 25%;
+}
+
+.received{
+    background-color: white;
+    margin-left: 6rem;
+    width: 25%;
+}
+
+div.mex > p.clock{
+    font-size: 0.65rem;
+    color: gray;
+    align-self: flex-end;
+}
+
+.inserireMex input{
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+}
+
+.grandezzaSectionMex{
+    width: 75px;
     color: gray;
 }
