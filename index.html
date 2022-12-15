@@ -46,11 +46,11 @@
 
                     </section>
                     <section class="thirdPart">
-                        <div class="serch">
+                        <div class="serch" @click="serchFromContacsList(nomeDaCercare)">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </div>
                         <div class="serchUserInput">
-                            <input type="text" placeholder="Cerca o inizia una nuova chat">
+                            <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="nomeDaCercare" @keyup.enter="serchFromContacsList(nomeDaCercare)">
                         </div>
                         
 
@@ -59,7 +59,7 @@
                 </header>
 
                 <main class="navbarMain">
-                    <div class="chats" v-for="contact,index in contacts" @click="changeChat(index)" :class="contact.visible == false ? `active` : `` ">
+                    <div class="chats" v-for="contact,index in contacts" @click="changeChat(index)" :class="contact.visible == false ? `d-none` : `` ">
                         <div>
                             <img :src=`./img/avatar${contact.avatar}.jpg` :alt=`avatar${contact.avatar}` class="rounded-circle me-2">
                         </div>

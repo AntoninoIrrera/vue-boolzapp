@@ -179,6 +179,8 @@ createApp({
             numeroImg: "_1",
 
             userInput: "",
+
+            nomeDaCercare: "",
         }
     },
     methods: {
@@ -186,13 +188,13 @@ createApp({
         changeChat(indice){
 
             
-            this.contacts[this.contenitoreVariabile].visible = true;
+            // this.contacts[this.contenitoreVariabile].visible = true;
 
             this.contenitoreVariabile = indice
 
             this.indiceDisplay = indice;
 
-            this.contacts[indice].visible = false;
+            // this.contacts[indice].visible = false;
 
             this.displayNome = this.contacts[indice].name; 
 
@@ -229,12 +231,34 @@ createApp({
 
             })
 
+        },
+        serchFromContacsList(nome){
+            
+            this.contacts.forEach(contact => {
+                contact.visible = true;
+            });
+
+            const arraySerchName = this.contacts.filter((contact) => 
+
+                contact.name.includes(nome.charAt(0).toUpperCase() + nome.substring(1).toLowerCase())
+
+            );
+                
+
+            const differenza = this.contacts.filter(contact => !arraySerchName.includes(contact));
+
+
+            differenza.forEach(elemento => {
+                elemento.visible = false;
+            });
+
+
         }
 
 
 
     },
     created(){
-        this.contacts[0].visible = false;
+        // this.contacts[0].visible = false;
     }
 }).mount("#app")
