@@ -59,7 +59,7 @@
                 </header>
 
                 <main class="navbarMain">
-                    <div class="chats" v-for="contact,index in contacts" @click="changeChat(index)" :class="contact.visible == false ? `d-none` : `` ">
+                    <div class="chats" v-for="contact,index in contacts" @click="changeChat(index)" :class="contact.visible == false ? `d-none` : ``, giveActiveChats(index) == true ? `active` : `` ">
                         <div>
                             <img :src=`./img/avatar${contact.avatar}.jpg` :alt=`avatar${contact.avatar}` class="rounded-circle me-2">
                         </div>

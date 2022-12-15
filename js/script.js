@@ -187,14 +187,13 @@ createApp({
 
         changeChat(indice){
 
-            
-            // this.contacts[this.contenitoreVariabile].visible = true;
 
             this.contenitoreVariabile = indice
 
+
+
             this.indiceDisplay = indice;
 
-            // this.contacts[indice].visible = false;
 
             this.displayNome = this.contacts[indice].name; 
 
@@ -253,12 +252,24 @@ createApp({
             });
 
 
+        },
+        giveActiveChats(indice){
+
+            
+
+            if(this.contenitoreVariabile == indice){
+
+                return true;
+            
+            }
+
+
+
+
         }
 
 
 
     },
-    created(){
-        // this.contacts[0].visible = false;
-    }
+  
 }).mount("#app")
