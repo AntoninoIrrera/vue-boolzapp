@@ -71,7 +71,7 @@
                             <span>12:00</span>
                         </div>
                     </div>
-                    <div v-if="prova == contacts.length">
+                    <div v-if="contatoreChats == contacts.length">
                         <p class="m-4 fw-bold">Non ci sono contatti con quel nome</p>
                     </div>
                     
@@ -100,8 +100,15 @@
 
                 <main class="mainMex">
                     <section class="sfondoMex">
-                        <div class="mex" v-for="mex in contacts[indiceDisplay].messages" :class="mex.status == `sent` ? `sent` : `received`">
-                            <p class="m-0 ms-2 mt-2">{{mex.message}}</p>
+                        <div class="mex" v-for="mex,index in contacts[indiceDisplay].messages" :class="mex.status == `sent` ? `sent` : `received`" @mouseover="showOptionsMex(index)" @mouseleave="hiddenOptionsMex()">
+                            <div class="optionsMex">
+                                <p class="m-0 ms-2 mt-2">{{mex.message}}</p>
+                                <i class="fa-solid fa-angle-down" :class="indiceOptionsMex == index ? `` : `d-none` " @click="showHiddenOptions(index)"></i>
+                                <div class="menuOptions" :class="indiceOptions == index ? `` : `d-none`">
+                                    <p>Message info</p>
+                                    <p @click="deleteMex(index)">Delete message</p>
+                                </div>
+                            </div>
                             <p class="m-0 me-2 mb-1 clock">{{mex.date}}</p>
                         </div>
 

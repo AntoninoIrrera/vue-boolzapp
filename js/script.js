@@ -182,7 +182,12 @@ createApp({
 
             nomeDaCercare: "",
 
-            prova: 0,
+            contatoreChats: 0,
+
+
+            indiceOptionsMex: null,
+
+            indiceOptions: null,
         }
     },
     methods: {
@@ -190,7 +195,7 @@ createApp({
         changeChat(indice){
 
 
-            this.contenitoreVariabile = indice
+            this.contenitoreVariabile = indice;
 
 
 
@@ -235,7 +240,7 @@ createApp({
         },
         serchFromContacsList(nome){
 
-            this.prova = 0;
+            this.contatoreChats = 0;
 
             this.contacts.forEach(contact => {
                 contact.visible = true;
@@ -253,7 +258,7 @@ createApp({
 
             differenza.forEach(elemento => {
                 elemento.visible = false;
-                this.prova++;
+                this.contatoreChats++;
             });
 
 
@@ -270,6 +275,40 @@ createApp({
             }
 
 
+
+
+        },
+        showOptionsMex(indice){
+
+
+            this.indiceOptionsMex = indice
+
+            
+
+
+        },
+        hiddenOptionsMex(){
+
+            
+            this.indiceOptionsMex = null;
+            this.indiceOptions = null;
+        
+        
+        },
+        showHiddenOptions(indice){
+
+
+
+            this.indiceOptions = indice;
+
+
+        },
+        deleteMex(indice){
+
+            this.contacts.forEach(contact => {
+                
+                contact.messages.splice(indice, 1);
+            });
 
 
         }
