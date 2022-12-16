@@ -226,6 +226,8 @@ createApp({
                 }
             )
 
+         
+
             this.clearMexUtente();
 
             setTimeout(() => {
@@ -238,13 +240,97 @@ createApp({
         },
         getMexAnswer(){
 
-            this.contacts[this.indiceDisplay].messages.push({
+           
+            if (this.contacts[this.indiceDisplay].messages[this.contacts[this.indiceDisplay].messages.length - 1].message == "ciao") {
 
-                date: '01:00',
-                message: 'OK!?!?!!',
-                status: 'received'
+                this.contacts[this.indiceDisplay].messages.push(
 
-            })
+                    {
+
+                        date: '00:02',
+                        message: 'ciao',
+                        status: 'received'
+
+                    }
+
+                )
+
+
+            }else if (this.contacts[this.indiceDisplay].messages[this.contacts[this.indiceDisplay].messages.length - 1].message == "come stai?") {
+
+                this.contacts[this.indiceDisplay].messages.push(
+
+                    {
+
+                        date: '00:02',
+                        message: 'bene tu?',
+                        status: 'received'
+
+                    }
+
+                )
+
+
+            }else if (this.contacts[this.indiceDisplay].messages[this.contacts[this.indiceDisplay].messages.length - 1].message == "bene") {
+
+                this.contacts[this.indiceDisplay].messages.push(
+
+                    {
+
+                        date: '00:02',
+                        message: 'bene',
+                        status: 'received'
+
+                    }
+
+                )
+
+
+            } else if (this.contacts[this.indiceDisplay].messages[this.contacts[this.indiceDisplay].messages.length - 1].message == "che fai?") {
+
+                this.contacts[this.indiceDisplay].messages.push(
+
+                    {
+
+                        date: '00:02',
+                        message: 'niente tu?',
+                        status: 'received'
+
+                    }
+
+                )
+
+
+            } else if (this.contacts[this.indiceDisplay].messages[this.contacts[this.indiceDisplay].messages.length - 1].message == "niente") {
+
+                this.contacts[this.indiceDisplay].messages.push(
+
+                    {
+
+                        date: '00:02',
+                        message: 'capito',
+                        status: 'received'
+
+                    }
+
+                )
+
+
+            } else{
+                this.contacts[this.indiceDisplay].messages.push(
+
+                    {
+
+                        date: '00:02',
+                        message: 'non sai tenere una conversazione',
+                        status: 'received'
+
+                    }
+
+                )
+            }
+
+           
 
         },
         serchFromContacsList(nome){
