@@ -80,7 +80,7 @@
                 </div>
 
                 <main class="navbarMain">
-                    <div class="chats" v-for="contact,index in contacts" @mouseover="showArichivie(index)" @mouseleave="hiddenArichivie()" @click="changeChat(index)" :class="contact.visible == false ? `d-none` : ``, giveActiveChats(index) == true ? `active` : `` ">
+                    <div class="chats" v-for="contact,index in contacts" @mouseover="showArichivie(index)" @mouseleave="hiddenArichivie()" @click="changeChat(index)" :class="contact.visible == false ? `d-none` : ``, giveActiveChats(index) == true ? `active` : ``, contact.name == `` ? `d-none` : `` ">
                         <div>
                             <img :src=`./img/avatar${contact.avatar}.jpg` :alt=`avatar${contact.avatar}` class="rounded-circle me-2">
                         </div>
@@ -107,14 +107,14 @@
 
                 <header class="headerMex">
 
-                    <div>
+                    <div :class="contacts[0].name == `` ? `d-none` : ``">
                         <img :src=`./img/avatar${numeroImg}.jpg` :alt=`avatar${numeroImg}` class="rounded-circle me-2">
                     </div>
-                    <div class="w-75">
+                    <div class="w-75" :class="contacts[0].name == `` ? `d-none` : ``">
                         <h5 class="m-0">{{displayNome}}</h5>
                         <p class="m-0">Ultimo accesso oggi alle 12:00</p>
                     </div>
-                    <div class="w-25 text-end">
+                    <div class="w-25 text-end" :class="contacts[0].name == `` ? `d-none` : ``">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <i class="fa-solid fa-paperclip"></i>
                         <i class="fa-solid fa-ellipsis-vertical"></i>
@@ -124,7 +124,7 @@
 
                 <main class="mainMex">
                     <section class="sfondoMex">
-                        <div class="mex" v-for="mex,index in contacts[indiceDisplay].messages" :class="mex.status == `sent` ? `sent` : `received`" @mouseover="showOptionsMex(index)" @mouseleave="hiddenOptionsMex()">
+                        <div class="mex" v-for="mex,index in contacts[indiceDisplay].messages" :class="mex.status == `sent` ? `sent` : `received`, mex.message == `` ? `d-none` : ``" @mouseover="showOptionsMex(index)" @mouseleave="hiddenOptionsMex()">
                             <div class="optionsMex">
                                 <p class="m-0 ms-2 mt-2">{{mex.message}}</p>
                                 <i class="fa-solid fa-angle-down" :class="indiceOptionsMex == index ? `` : `d-none` " @click="showHiddenOptions(index)"></i>
@@ -158,14 +158,14 @@
                         </div> -->
                         
                     </section>
-                    <section class="inserireMex">
-                        <div class="grandezzaSectionMex text-end">
+                    <section class="inserireMex" >
+                        <div class="grandezzaSectionMex text-end" :class="contacts[0].name == `` ? `d-none` : ``">
                             <i class="fa-regular fa-face-smile m-2 fs-4"></i>
                         </div>
-                        <div class="w-75">
+                        <div class="w-75" :class="contacts[0].name == `` ? `d-none` : ``">
                             <input class="w-100 p-2" type="text" v-model="userInput" placeholder="Scrivi il messaggio" @keyup.enter="sentMex(userInput)">
                         </div>
-                        <div class="grandezzaSectionMex">
+                        <div class="grandezzaSectionMex" :class="contacts[0].name == `` ? `d-none` : ``">
                             <i class="fa-solid fa-microphone fs-4"></i>
                         </div>
                     </section>

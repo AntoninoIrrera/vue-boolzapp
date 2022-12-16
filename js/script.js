@@ -195,6 +195,11 @@ createApp({
 
             showIndiceArichivieChats: 0,
 
+            contatoreMex: 1,
+            
+            contatoreArchivieChat: 1,
+
+            contatoreExtractChat: 1,
 
 
         }
@@ -210,6 +215,9 @@ createApp({
 
             this.indiceDisplay = indice;
 
+            this.contatoreMex = 1;
+
+            // this.contatoreArchivieChat = 1;
 
             this.displayNome = this.contacts[indice].name; 
 
@@ -399,11 +407,24 @@ createApp({
         },
         deleteMex(indice){
 
-            if (this.contacts[this.indiceDisplay].messages.length > 1){
+            if (this.contacts[this.indiceDisplay].messages.length != 0){
 
+
+                if(this.contatoreMex > 0){
+
+                    this.contacts[this.indiceDisplay].messages.push({
+                        date: '',
+                        message: '',
+                        status: ''
+                    });
+                    
+                }
+                
                 this.contacts[this.indiceDisplay].messages.splice(indice, 1);
+                
+                
+                this.contatoreMex--;
             }
-
 
 
 
@@ -420,15 +441,45 @@ createApp({
         },
         archivieChat(indice){
 
-            if (this.contacts.length > 1){
-                
+            if (this.contacts[indice].length != 0) {
+
+
+                if (this.contatoreArchivieChat > 0) {
+
+                    this.contacts.push({
+                        name: '',
+                        avatar: '_1',
+                        visible: true,
+                        messages: [
+                            {
+                                date: '',
+                                message: '',
+                                status: ''
+                            },
+                            {
+                                date: '',
+                                message: '',
+                                status: ''
+                            },
+                            {
+                                date: '',
+                                message: '',
+                                status: ''
+                            }
+                        ],
+                    });
+
+                    this.contatoreArchivieChat--;
+                    this.contatoreExtractChat = 1;
+                    
+
+                }
+
                 this.arrayArchivieChats.push(this.contacts[indice]);
 
                 this.contacts.splice(indice, 1);
+
             }
-
-                
-
 
             
 
@@ -445,10 +496,26 @@ createApp({
         },
         extracktChat(indice){
 
+
+            if(this.contatoreExtractChat > 0){
+                
+                this.contacts.splice(this.contacts.length - 1, 1);
+                this.contatoreArchivieChat = 1;
+                this.contatoreExtractChat--;
+                
+
+            }
+
+
             this.contacts.push(this.arrayArchivieChats[indice]);
 
             this.arrayArchivieChats.splice(indice, 1);
 
+
+
+            this.displayNome = this.contacts[0].name; 
+            
+            this.numeroImg = this.contacts[0].avatar;
         }
 
 
