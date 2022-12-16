@@ -52,14 +52,32 @@
                         <div class="serchUserInput">
                             <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="nomeDaCercare" @keyup.enter="serchFromContacsList(nomeDaCercare)">
                         </div>
-                        
-
                     </section>
-                        
+                    <section class="fourthPart" v-if="arrayArchivieChats.length > 0">
+                        <p class="fw-bold" @click="showArichivieChats()">Hai {{arrayArchivieChats.length}} chats archiviate</p>
+                    </section>
                 </header>
 
+                <div class="listOfChatsArchivie" :class="showIndiceArichivieChats == 1 ? `` : `d-none`" @mouseleave="hiddenArchivieChats()">
+                    <div class="chats archivie" v-for="archivieChat,index in arrayArchivieChats" @mouseover="showArichivie(index)" @mouseleave="hiddenArichivie()">
+                        <div>
+                            <img :src=`./img/avatar${archivieChat.avatar}.jpg` :alt=`avatar${archivieChat.avatar}` class="rounded-circle me-2">
+                        </div>
+                        <div class="w-75">
+                            <h5 class="m-0">{{archivieChat.name}}</h5>
+                            <p class="m-0">{{archivieChat.messages[archivieChat.messages.length - 1].message}}</p>
+                        </div>
+                        <div>
+                            <span>12:00</span>
+                        </div>
+                        <div class="chatsArichivie" :class="indiceArichivie == index ? `` : `d-none`">
+                            <i class="fa-regular fa-calendar-xmark" @click="extracktChat(index)"></i>
+                        </div>
+                    </div>
+                </div>
+
                 <main class="navbarMain">
-                    <div class="chats" v-for="contact,index in contacts" @click="changeChat(index)" :class="contact.visible == false ? `d-none` : ``, giveActiveChats(index) == true ? `active` : `` ">
+                    <div class="chats" v-for="contact,index in contacts" @mouseover="showArichivie(index)" @mouseleave="hiddenArichivie()" @click="changeChat(index)" :class="contact.visible == false ? `d-none` : ``, giveActiveChats(index) == true ? `active` : `` ">
                         <div>
                             <img :src=`./img/avatar${contact.avatar}.jpg` :alt=`avatar${contact.avatar}` class="rounded-circle me-2">
                         </div>
@@ -69,6 +87,9 @@
                         </div>
                         <div>
                             <span>12:00</span>
+                        </div>
+                        <div class="chatsArichivie" :class="indiceArichivie == index ? `` : `d-none`">
+                            <i class="fa-solid fa-box-archive" @click="archivieChat(index)"></i>
                         </div>
                     </div>
                     <div v-if="contatoreChats == contacts.length">

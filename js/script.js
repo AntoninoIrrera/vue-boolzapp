@@ -188,6 +188,15 @@ createApp({
             indiceOptionsMex: null,
 
             indiceOptions: null,
+
+            indiceArichivie: null,
+
+            arrayArchivieChats: [],
+
+            showIndiceArichivieChats: 0,
+
+
+
         }
     },
     methods: {
@@ -310,8 +319,46 @@ createApp({
             });
 
 
-        }
+        },
+        showArichivie(indice){
 
+            this.indiceArichivie = indice;
+
+        },
+        hiddenArichivie(){
+
+            this.indiceArichivie = null;
+
+        },
+        archivieChat(indice){
+
+
+
+            this.arrayArchivieChats.push(this.contacts[indice]);
+                
+            this.contacts.splice(indice, 1);
+
+
+            
+
+        },
+        showArichivieChats(){
+
+            this.showIndiceArichivieChats = 1;
+
+
+        },
+        hiddenArchivieChats(){
+            this.showIndiceArichivieChats = 0;
+        
+        },
+        extracktChat(indice){
+
+            this.contacts.push(this.arrayArchivieChats[indice]);
+
+            this.arrayArchivieChats.splice(indice, 1);
+
+        }
 
 
     },
