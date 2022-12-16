@@ -201,7 +201,7 @@ createApp({
 
             contatoreExtractChat: 1,
 
-
+            contatoreSentMex: 0,
         }
     },
     methods: {
@@ -226,6 +226,13 @@ createApp({
         },
         sentMex(mexUtente){
 
+            if(this.contatoreSentMex > 0){
+
+                this.contacts[this.indiceDisplay].messages.splice(this.contacts[this.indiceDisplay].messages.length - 1, 1)
+                this.contatoreSentMex--;
+                this.contatoreMex = 1;
+            }
+
             this.contacts[this.indiceDisplay].messages.push(
                 {
                     date: "00:00",
@@ -234,7 +241,6 @@ createApp({
                 }
             )
 
-         
 
             this.clearMexUtente();
 
@@ -418,12 +424,14 @@ createApp({
                         status: ''
                     });
                     
+                    this.contatoreMex--;
+                    this.contatoreSentMex = 1;
                 }
                 
                 this.contacts[this.indiceDisplay].messages.splice(indice, 1);
                 
                 
-                this.contatoreMex--;
+
             }
 
 
@@ -516,9 +524,27 @@ createApp({
             this.displayNome = this.contacts[0].name; 
             
             this.numeroImg = this.contacts[0].avatar;
+        },
+        scrollIntoLastItem(){
+
+
+            const elementoDaScorrere = document.querySelectorAll("div.mex")
+
+
+            elementoDaScorrere[elementoDaScorrere.length - 1].scrollIntoView({
+                behavior: "smooth"
+            })
+
+            // this.contacts[this.indiceDisplay].messages[this.contacts[this.indiceDisplay].messages.length - 1].scrollIntoView({
+            //     behavior: 'smooth'
+            // });  
+            
         }
 
-
     },
-  
+    updated(){
+        
+        this.scrollIntoLastItem();
+    
+    }
 }).mount("#app")
