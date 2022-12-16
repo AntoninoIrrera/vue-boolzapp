@@ -283,7 +283,6 @@ createApp({
 
             this.indiceOptionsMex = indice
 
-            
 
 
         },
