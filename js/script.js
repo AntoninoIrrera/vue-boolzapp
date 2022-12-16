@@ -399,10 +399,12 @@ createApp({
         },
         deleteMex(indice){
 
-            this.contacts.forEach(contact => {
-                
-                contact.messages.splice(indice, 1);
-            });
+            if (this.contacts[this.indiceDisplay].messages.length > 1){
+
+                this.contacts[this.indiceDisplay].messages.splice(indice, 1);
+            }
+
+
 
 
         },
