@@ -420,11 +420,14 @@ createApp({
         },
         archivieChat(indice){
 
-
-
-            this.arrayArchivieChats.push(this.contacts[indice]);
+            if (this.contacts.length > 1){
                 
-            this.contacts.splice(indice, 1);
+                this.arrayArchivieChats.push(this.contacts[indice]);
+
+                this.contacts.splice(indice, 1);
+            }
+
+                
 
 
             
