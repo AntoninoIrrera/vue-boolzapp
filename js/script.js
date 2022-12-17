@@ -202,6 +202,7 @@ createApp({
             contatoreExtractChat: 1,
 
             contatoreSentMex: 0,
+
         }
     },
     methods: {
@@ -371,7 +372,6 @@ createApp({
             });
 
 
-
         },
         giveActiveChats(indice){
 
@@ -449,43 +449,87 @@ createApp({
         },
         archivieChat(indice){
 
+
             if (this.contacts[indice].length != 0) {
+
+                if(this.contatoreArchivieChat == 0){
+
+                    this.contacts.splice(this.contacts.length - 1, 1);
+
+
+                    this.contatoreArchivieChat = 1;
+                }
 
 
                 if (this.contatoreArchivieChat > 0) {
 
-                    this.contacts.push({
-                        name: '',
-                        avatar: '_1',
-                        visible: true,
-                        messages: [
-                            {
-                                date: '',
-                                message: '',
-                                status: ''
-                            },
-                            {
-                                date: '',
-                                message: '',
-                                status: ''
-                            },
-                            {
-                                date: '',
-                                message: '',
-                                status: ''
-                            }
-                        ],
-                    });
+                    if(indice == 0){
 
-                    this.contatoreArchivieChat--;
-                    this.contatoreExtractChat = 1;
-                    
+                        this.contacts.push({
+                            name: this.contacts[indice].name,
+                            avatar: this.contacts[indice].avatar,
+                            visible: true,
+                            messages: [
+                                {
+                                    date: '',
+                                    message: '',
+                                    status: 'non comparire'
+                                },
+                                {
+                                    date: '',
+                                    message: '',
+                                    status: ''
+                                },
+                                {
+                                    date: '',
+                                    message: '',
+                                    status: ''
+                                }
+                            ],
+                        });
+                        
+                        this.contatoreArchivieChat--;
+                        this.contatoreExtractChat = 1;
+                        
+                    }else{
+
+                        this.contacts.push({
+                            name: this.contacts[indice - 1].name,
+                            avatar: this.contacts[indice - 1].avatar,
+                            visible: true,
+                            messages: [
+                                {
+                                    date: '',
+                                    message: '',
+                                    status: 'non comparire'
+                                },
+                                {
+                                    date: '',
+                                    message: '',
+                                    status: ''
+                                },
+                                {
+                                    date: '',
+                                    message: '',
+                                    status: ''
+                                }
+                            ],
+                        });
+
+                        this.contatoreArchivieChat--;
+                        this.contatoreExtractChat = 1;
+                    }
 
                 }
+
+              
+                   
 
                 this.arrayArchivieChats.push(this.contacts[indice]);
 
                 this.contacts.splice(indice, 1);
+
+
 
             }
 
@@ -535,9 +579,7 @@ createApp({
                 behavior: "smooth"
             })
 
-            // this.contacts[this.indiceDisplay].messages[this.contacts[this.indiceDisplay].messages.length - 1].scrollIntoView({
-            //     behavior: 'smooth'
-            // });  
+        
             
         }
 
@@ -545,6 +587,6 @@ createApp({
     updated(){
         
         this.scrollIntoLastItem();
-    
+        
     }
 }).mount("#app")
