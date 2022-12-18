@@ -197,7 +197,7 @@ createApp({
 
             contatoreMex: 1,
             
-            contatoreArchivieChat: 1,
+            contatoreArchivieChat: 3,
 
             contatoreExtractChat: 1,
 
@@ -449,91 +449,78 @@ createApp({
         },
         archivieChat(indice){
 
+            if(this.contatoreArchivieChat == 0){
 
-            if (this.contacts[indice].length != 0) {
+                this.contacts.splice(this.contacts.length - 1,1)
 
-                if(this.contatoreArchivieChat == 0){
-
-                    this.contacts.splice(this.contacts.length - 1, 1);
-
-
-                    this.contatoreArchivieChat = 1;
-                }
-
-
-                if (this.contatoreArchivieChat > 0) {
-
-                    if(indice == 0){
-
-                        this.contacts.push({
-                            name: this.contacts[indice].name,
-                            avatar: this.contacts[indice].avatar,
-                            visible: true,
-                            messages: [
-                                {
-                                    date: '',
-                                    message: '',
-                                    status: 'non comparire'
-                                },
-                                {
-                                    date: '',
-                                    message: '',
-                                    status: ''
-                                },
-                                {
-                                    date: '',
-                                    message: '',
-                                    status: ''
-                                }
-                            ],
-                        });
-                        
-                        this.contatoreArchivieChat--;
-                        this.contatoreExtractChat = 1;
-                        
-                    }else{
-
-                        this.contacts.push({
-                            name: this.contacts[indice - 1].name,
-                            avatar: this.contacts[indice - 1].avatar,
-                            visible: true,
-                            messages: [
-                                {
-                                    date: '',
-                                    message: '',
-                                    status: 'non comparire'
-                                },
-                                {
-                                    date: '',
-                                    message: '',
-                                    status: ''
-                                },
-                                {
-                                    date: '',
-                                    message: '',
-                                    status: ''
-                                }
-                            ],
-                        });
-
-                        this.contatoreArchivieChat--;
-                        this.contatoreExtractChat = 1;
-                    }
-
-                }
-
-              
-                   
-
-                this.arrayArchivieChats.push(this.contacts[indice]);
-
-                this.contacts.splice(indice, 1);
-
-
-
+                this.contatoreArchivieChat = 1;
             }
 
+           
+
+            if (this.contatoreArchivieChat > 0) {
+
+                if(indice == 0){
+                    this.contacts.push({
+                        name: this.contacts[indice].name,
+                        avatar: this.contacts[indice].avatar,
+                        visible: true,
+                        messages: [
+                            {
+                                date: '',
+                                message: '',
+                                status: 'non comparire'
+                            },
+                            {
+                                date: '',
+                                message: '',
+                                status: ''
+                            },
+                            {
+                                date: '',
+                                message: '',
+                                status: ''
+                            }
+                        ],
+                    });
+                    
+                    this.contatoreArchivieChat = 0;
+                    this.contatoreExtractChat = 1;
+                    
+                }else{
+                    this.contacts.push({
+                        name: this.contacts[indice - 1].name,
+                        avatar: this.contacts[indice - 1].avatar,
+                        visible: true,
+                        messages: [
+                            {
+                                date: '',
+                                message: '',
+                                status: 'non comparire'
+                            },
+                            {
+                                date: '',
+                                message: '',
+                                status: ''
+                            },
+                            {
+                                date: '',
+                                message: '',
+                                status: ''
+                            }
+                        ],
+                    });
+                    this.contatoreArchivieChat = 0;
+                    this.contatoreExtractChat = 1;
+                }
+            }
+           
+            this.arrayArchivieChats.push(this.contacts[indice]);
+           
+            this.contacts.splice(indice, 1);
             
+
+
 
         },
         showArichivieChats(){
@@ -565,9 +552,11 @@ createApp({
 
 
 
-            this.displayNome = this.contacts[0].name; 
+            this.displayNome = this.contacts[this.contacts.length - 1].name; 
             
-            this.numeroImg = this.contacts[0].avatar;
+            this.numeroImg = this.contacts[this.contacts.length - 1].avatar;
+
+
         },
         scrollIntoLastItem(){
 
@@ -587,6 +576,8 @@ createApp({
     updated(){
         
         this.scrollIntoLastItem();
+        
+       
         
     }
 }).mount("#app")

@@ -91,7 +91,7 @@
                         <div>
                             <span>12:00</span>
                         </div>
-                        <div class="chatsArichivie" :class="indiceArichivie == index ? `` : `d-none`">
+                        <div v-if="giveActiveChats(index) == true" class="chatsArichivie" :class="indiceArichivie == index ? `` : `d-none`">
                             <i class="fa-solid fa-box-archive" @click="archivieChat(index)"></i>
                         </div>
                     </div>
