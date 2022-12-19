@@ -89,7 +89,7 @@
                             <p class="m-0">{{contact.messages.length > 1 ? contact.messages[contact.messages.length - 1].message == `` ? contact.messages[contact.messages.length - 2].message : contact.messages[contact.messages.length - 1].message : contact.messages[contact.messages.length - 1].message}}</p>
                         </div>
                         <div>
-                            <span>{{contact.messages[contact.messages.length - 1].date.substring(10, 16)}}</span>
+                            <span>{{contact.messages.length > 1 ? contact.messages[contact.messages.length - 1].date == `` ? contact.messages[contact.messages.length - 2].date.substring(10, 16) : contact.messages[contact.messages.length - 1].date.substring(10, 16) : contact.messages[contact.messages.length - 1].date.substring(10, 16)}}</span>
                         </div>
                         <div v-if="giveActiveChats(index) == true" class="chatsArichivie" :class="indiceArichivie == index ? `` : `d-none`">
                             <i class="fa-solid fa-box-archive" @click="archivieChat(index)"></i>

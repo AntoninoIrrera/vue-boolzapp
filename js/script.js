@@ -573,7 +573,6 @@ createApp({
         
             
         },
-        
     },
     updated(){
         
