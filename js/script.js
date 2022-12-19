@@ -229,28 +229,32 @@ createApp({
         },
         sentMex(mexUtente){
 
-            if(this.contatoreSentMex > 0){
+            if(mexUtente.length > 0){
 
-                this.contacts[this.indiceDisplay].messages.splice(this.contacts[this.indiceDisplay].messages.length - 1, 1)
-                this.contatoreSentMex--;
-                this.contatoreMex = 1;
-            }
-
-            this.contacts[this.indiceDisplay].messages.push(
-                {
-                    date: `${luxon.DateTime.now().toFormat('D')} ${luxon.DateTime.now().toFormat('t')}`,    
-                    message: mexUtente,
-                    status: "sent"
+                
+                if(this.contatoreSentMex > 0){
+                    
+                    this.contacts[this.indiceDisplay].messages.splice(this.contacts[this.indiceDisplay].messages.length - 1, 1)
+                    this.contatoreSentMex--;
+                    this.contatoreMex = 1;
                 }
-            )
-
-
-            this.clearMexUtente();
-
-            setTimeout(() => {
-                this.getMexAnswer();
-            }, 1*1000);
-
+                
+                this.contacts[this.indiceDisplay].messages.push(
+                    {
+                        date: `${luxon.DateTime.now().toFormat('D')} ${luxon.DateTime.now().toFormat('t')}`,    
+                        message: mexUtente,
+                        status: "sent"
+                    }
+                )
+                    
+                    
+                this.clearMexUtente();
+                    
+                setTimeout(() => {
+                    this.getMexAnswer();
+                }, 1*1000);
+            }
+                    
         },
         clearMexUtente(){
             this.userInput = "";
@@ -573,6 +577,8 @@ createApp({
         
             
         },
+        
+
     },
     updated(){
         

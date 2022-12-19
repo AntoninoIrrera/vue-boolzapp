@@ -219,6 +219,7 @@ body{
     margin-top: 0.75rem;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .sent{
@@ -311,4 +312,14 @@ div.mex > p.clock{
 .archivie{
     background-color: white;
     height: 100px;
+}
+
+.giorno{
+    display: flex;
+    flex-direction: column;
+}
+
+.date{
+    text-align: center;
+    margin-top: 1rem;
 }

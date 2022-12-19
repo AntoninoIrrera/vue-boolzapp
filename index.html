@@ -71,7 +71,7 @@
                             <p class="m-0">{{archivieChat.messages[archivieChat.messages.length - 1].message}}</p>
                         </div>
                         <div>
-                            <span>12:00</span>
+                            <span>{{archivieChat.messages.length > 1 ? archivieChat.messages[archivieChat.messages.length - 1].date == `` ? archivieChat.messages[archivieChat.messages.length - 2].date.substring(10, 16) : archivieChat.messages[archivieChat.messages.length - 1].date.substring(10, 16) : archivieChat.messages[archivieChat.messages.length - 1].date.substring(10, 16)}}</span>
                         </div>
                         <div class="chatsArichivie" :class="indiceArichivie == index ? `` : `d-none`">
                             <i class="fa-regular fa-calendar-xmark" @click="extracktChat(index)"></i>
@@ -124,18 +124,21 @@
 
                 <main class="mainMex">
                     <section class="sfondoMex">
-                        <div class="mex" v-for="mex,index in contacts[indiceDisplay].messages" :class="mex.status == `sent` ? `sent` : `received`, mex.date == `` ? `d-none` : ``" @mouseover="showOptionsMex(index)" @mouseleave="hiddenOptionsMex()">
-                            <div class="optionsMex">
-                                <p class="m-0 ms-2 mt-2">{{mex.message}}</p>
-                                <i class="fa-solid fa-angle-down" :class="indiceOptionsMex == index ? `` : `d-none` " @click="showHiddenOptions(index)"></i>
-                                <div class="menuOptions" :class="indiceOptions == index ? `` : `d-none`">
-                                    <p>Message info</p>
-                                    <p @click="deleteMex(index)">Delete message</p>
+                        <div class="giorno" v-for="mex,index in contacts[indiceDisplay].messages">
+                            <p class="date">{{mex.date.substring(0,11)}}</p>
+                            <div class="mex" :class="mex.status == `sent` ? `sent` : `received`, mex.date == `` ? `d-none` : ``" @mouseover="showOptionsMex(index)" @mouseleave="hiddenOptionsMex()">
+                                <div class="optionsMex">
+                                    <p class="m-0 ms-2 mt-2">{{mex.message}}</p>
+                                    <i class="fa-solid fa-angle-down" :class="indiceOptionsMex == index ? `` : `d-none` " @click="showHiddenOptions(index)"></i>
+                                    <div class="menuOptions" :class="indiceOptions == index ? `` : `d-none`">
+                                        <p>Message info</p>
+                                        <p @click="deleteMex(index)">Delete message</p>
+                                    </div>
                                 </div>
+                                <p class="m-0 me-2 mb-1 clock">{{mex.date.substring(10, 16)}}</p>
                             </div>
-                            <p class="m-0 me-2 mb-1 clock">{{mex.date}}</p>
                         </div>
-
+                            
 
                         <!-- <div class="mex sent">
                             <p class="m-0 ms-2 mt-2">ciao</p>
