@@ -89,7 +89,7 @@
                             <p class="m-0">{{contact.messages.length > 1 ? contact.messages[contact.messages.length - 1].message == `` ? contact.messages[contact.messages.length - 2].message : contact.messages[contact.messages.length - 1].message : contact.messages[contact.messages.length - 1].message}}</p>
                         </div>
                         <div>
-                            <span>12:00</span>
+                            <span>{{contact.messages[contact.messages.length - 1].date.substring(10, 16)}}</span>
                         </div>
                         <div v-if="giveActiveChats(index) == true" class="chatsArichivie" :class="indiceArichivie == index ? `` : `d-none`">
                             <i class="fa-solid fa-box-archive" @click="archivieChat(index)"></i>
@@ -112,7 +112,7 @@
                     </div>
                     <div class="w-75" :class="contacts[0].messages[0].status == `non comparire` ? `d-none` : ``">
                         <h5 class="m-0">{{displayNome}}</h5>
-                        <p class="m-0">Ultimo accesso oggi alle 12:00</p>
+                        <p class="m-0">Ultimo accesso oggi alle {{orario}}</p>
                     </div>
                     <div class="w-25 text-end" :class="contacts[0].messages[0].status == `non comparire` ? `d-none` : ``">
                         <i class="fa-solid fa-magnifying-glass"></i>
@@ -181,6 +181,7 @@
 
        </main> 
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.1.1/build/global/luxon.min.js"></script>
     <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
     <script src="./js/script.js"></script>
 </body>

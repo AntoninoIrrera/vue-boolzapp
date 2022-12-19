@@ -203,6 +203,8 @@ createApp({
 
             contatoreSentMex: 0,
 
+            orario: `${luxon.DateTime.now().toFormat('t')}`,
+
         }
     },
     methods: {
@@ -236,7 +238,7 @@ createApp({
 
             this.contacts[this.indiceDisplay].messages.push(
                 {
-                    date: "00:00",
+                    date: `${luxon.DateTime.now().toFormat('D')} ${luxon.DateTime.now().toFormat('t')}`,    
                     message: mexUtente,
                     status: "sent"
                 }
@@ -262,7 +264,7 @@ createApp({
 
                     {
 
-                        date: '00:02',
+                        date: `${luxon.DateTime.now().toFormat('D')} ${luxon.DateTime.now().toFormat('t')}`,
                         message: 'ciao',
                         status: 'received'
 
@@ -277,7 +279,7 @@ createApp({
 
                     {
 
-                        date: '00:02',
+                        date: `${luxon.DateTime.now().toFormat('D')} ${luxon.DateTime.now().toFormat('t')}`,
                         message: 'bene tu?',
                         status: 'received'
 
@@ -292,7 +294,7 @@ createApp({
 
                     {
 
-                        date: '00:02',
+                        date: `${luxon.DateTime.now().toFormat('D')} ${luxon.DateTime.now().toFormat('t')}`,
                         message: 'bene',
                         status: 'received'
 
@@ -307,7 +309,7 @@ createApp({
 
                     {
 
-                        date: '00:02',
+                        date: `${luxon.DateTime.now().toFormat('D')} ${luxon.DateTime.now().toFormat('t')}`,
                         message: 'niente tu?',
                         status: 'received'
 
@@ -322,7 +324,7 @@ createApp({
 
                     {
 
-                        date: '00:02',
+                        date: `${luxon.DateTime.now().toFormat('D')} ${luxon.DateTime.now().toFormat('t')}`,
                         message: 'capito',
                         status: 'received'
 
@@ -336,7 +338,7 @@ createApp({
 
                     {
 
-                        date: '00:02',
+                        date: `${luxon.DateTime.now().toFormat('D')} ${luxon.DateTime.now().toFormat('t')}`,
                         message: 'non sai tenere una conversazione',
                         status: 'received'
 
@@ -570,8 +572,8 @@ createApp({
 
         
             
-        }
-
+        },
+        
     },
     updated(){
         
